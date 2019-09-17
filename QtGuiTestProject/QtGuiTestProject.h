@@ -16,6 +16,7 @@ public:
 	QStringListModel* linesModel;
 	QString line_str;
 	QByteArray data_l;
+	QTimer* timer2;
 private:
 	Ui::QtGuiTestProjectClass ui;
 	QString get_text_for_mask;
@@ -31,4 +32,5 @@ public slots:
 	void read();
 	void modify();
 	void set_timer();
+	void make();
 };

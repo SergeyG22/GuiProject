@@ -11,29 +11,35 @@ QtGuiTestProject::QtGuiTestProject(QWidget *parent)
 {
 	ui.setupUi(this);
 	save_f.setDirectory("C:/");
-	QTimer* timer = new QTimer();
+	QTimer* timer1 = new QTimer();
+	timer2 = new QTimer();// установка таймера
 	this->setWindowTitle("file modification 1.0.1");
+	ui.lineEdit_timer->setValidator(new QIntValidator(0, 60));
 	connect(ui.pushButton_open_file, SIGNAL(clicked()), this, SLOT(open_file()));
 	connect(ui.pushButton_save, SIGNAL(clicked()), this, SLOT(save_file()));
 	connect(ui.pushButton_read, SIGNAL(clicked()), this, SLOT(read()));
 	connect(ui.pushButton_modify, SIGNAL(clicked()), this, SLOT(modify()));
-	connect(timer, SIGNAL(timeout()), this, SLOT(observer()));
+	connect(timer1, SIGNAL(timeout()), this, SLOT(observer()));
+	connect(timer2, SIGNAL(timeout()), this, SLOT(make()));
 	connect(ui.pushButton_timer, SIGNAL(clicked()), this, SLOT(set_timer()) );
-	timer->start(5000);
+	timer1->start(5000);
 	
 }
 
 void QtGuiTestProject::observer() // мониторит наличие входного файла каждый 5 секунд
 {	
+	if (!ui.checkBox_2->checkState()) 
+	{
 		if (ui.listWidget->count())
 		{
 			ui.label->setText(QString::fromLocal8Bit("Имеется входной файл"));
 		}
-		else 
+		else
 			ui.label->setText(QString::fromLocal8Bit("Входной файл отсутcтвует"));
+	}
 }
 
-void QtGuiTestProject::get_dir()
+  void QtGuiTestProject::get_dir()
 {
 
 	ui.listWidget->clear();
@@ -120,8 +126,13 @@ void QtGuiTestProject::modify() // изменяет получает данные сохраняет их в буфер
 }
 
 void QtGuiTestProject::set_timer() // функция установки таймера
+{	
+	timer2->start((ui.lineEdit_timer->text().toInt())*1000);
+}
+
+void QtGuiTestProject::make() // выполняет модификацию и останавливает таймер
 {
-	qDebug() << ui.lineEdit_timer->text();
-
-
+	modify(); 
+	modify();
+	timer2->stop();
 }
