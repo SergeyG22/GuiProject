@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>623</width>
-    <height>478</height>
+    <width>577</width>
+    <height>442</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,50 +17,18 @@
    <widget class="QListWidget" name="listWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>120</y>
+      <x>20</x>
+      <y>60</y>
       <width>256</width>
       <height>192</height>
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>40</y>
-      <width>261</width>
-      <height>65</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Путь к файлу</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1" colspan="2">
-      <widget class="QLineEdit" name="lineEdit_path"/>
-     </item>
-     <item row="1" column="1" colspan="2">
-      <widget class="QLineEdit" name="lineEdit_mask"/>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string> Маска файла</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QPushButton" name="pushButton_find">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>320</y>
+      <x>30</x>
+      <y>270</y>
       <width>101</width>
       <height>28</height>
      </rect>
@@ -72,8 +40,8 @@
    <widget class="QListView" name="listView">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>120</y>
+      <x>300</x>
+      <y>60</y>
       <width>256</width>
       <height>192</height>
      </rect>
@@ -82,8 +50,8 @@
    <widget class="QPushButton" name="pushButton_open_file">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>10</y>
+      <x>30</x>
+      <y>20</y>
       <width>93</width>
       <height>28</height>
      </rect>
@@ -95,8 +63,8 @@
    <widget class="QPushButton" name="pushButton_save">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>10</y>
+      <x>130</x>
+      <y>20</y>
       <width>93</width>
       <height>28</height>
      </rect>
@@ -108,43 +76,71 @@
    <widget class="QPushButton" name="pushButton_read">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>320</y>
+      <x>140</x>
+      <y>270</y>
       <width>121</width>
       <height>28</height>
      </rect>
     </property>
     <property name="text">
-     <string>Прочитать</string>
+     <string>Считать файл</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox_2">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>50</y>
-      <width>201</width>
-      <height>20</height>
+      <x>280</x>
+      <y>320</y>
+      <width>271</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string> периодический опрос файла</string>
+     <string> отключить периодический опрос файла</string>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>80</y>
-      <width>165</width>
-      <height>30</height>
+      <x>300</x>
+      <y>20</y>
+      <width>221</width>
+      <height>20</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout_2">
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Входной файл отсутствует</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>310</y>
+      <width>221</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLineEdit" name="lineEdit_modify"/>
+     </item>
      <item row="0" column="1">
+      <widget class="QPushButton" name="pushButton_modify">
+       <property name="text">
+        <string>Модифицировать файл</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
       <widget class="QLineEdit" name="lineEdit_timer"/>
      </item>
-     <item row="0" column="0">
+     <item row="1" column="1">
       <widget class="QPushButton" name="pushButton_timer">
        <property name="text">
         <string>Таймер</string>
@@ -153,46 +149,6 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>360</y>
-      <width>184</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLineEdit" name="lineEdit_modify"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_modify">
-       <property name="text">
-        <string>Модифицировать</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>623</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="separator"/>
-    <addaction name="separator"/>
-   </widget>
-   <addaction name="menuFile"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
