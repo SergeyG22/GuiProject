@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
+    <width>623</width>
     <height>478</height>
    </rect>
   </property>
@@ -22,19 +22,6 @@
       <width>256</width>
       <height>192</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkBox">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>320</y>
-      <width>111</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Удалять вход</string>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
@@ -92,29 +79,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>50</y>
-      <width>161</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Путь к выходным файлам</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>80</y>
-      <width>181</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_open_file">
     <property name="geometry">
      <rect>
@@ -141,7 +105,7 @@
      <string>Сохранить</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_modify">
+   <widget class="QPushButton" name="pushButton_read">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -151,8 +115,65 @@
      </rect>
     </property>
     <property name="text">
-     <string>Модифицировать</string>
+     <string>Прочитать</string>
     </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_2">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>50</y>
+      <width>201</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string> периодический опрос файла</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>80</y>
+      <width>165</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEdit_timer"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="pushButton_timer">
+       <property name="text">
+        <string>Таймер</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>360</y>
+      <width>184</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLineEdit" name="lineEdit_modify"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_modify">
+       <property name="text">
+        <string>Модифицировать</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -160,7 +181,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>600</width>
+     <width>623</width>
      <height>26</height>
     </rect>
    </property>
