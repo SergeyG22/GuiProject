@@ -15,7 +15,9 @@ QtGuiTestProject::QtGuiTestProject(QWidget *parent)
 	ui.setupUi(this);
 	save_f.setDirectory("C:/");
 	QTimer* timer1 = new QTimer();
-	timer2 = new QTimer();// установка таймера
+	timer2 = new QTimer();
+
+
 	this->setWindowTitle("file modification 1.0.1");
 	QRegExp rx("[a-z]?[A-Z]");
 	
@@ -51,7 +53,7 @@ void QtGuiTestProject::observer() // мониторит наличие входного файла каждый 5 с
 	}
 }
 
-  void QtGuiTestProject::get_dir()
+  void QtGuiTestProject::get_dir() // функция получает путь и директорию файла
 {
 
 	ui.listWidget->clear();
@@ -96,6 +98,9 @@ void QtGuiTestProject::open_file() // функция открывает файл
 	data_l = file.readAll();
 	const char* line_c = data_l.data();
 	line_str = QString(QString::fromLocal8Bit(line_c));
+	ui.textBrowser_2->clear();
+	ui.textBrowser_2->append(line_str);               
+	
 	allLines->append(line_str);
 }
 
@@ -103,59 +108,82 @@ void QtGuiTestProject::open_file() // функция открывает файл
 
 void QtGuiTestProject::save_file() // функция сохраняет в файл
 {	
-	QString dir = save_f.getSaveFileName(0, "Open", "", "All files (*.*) ;; Document files (*.txt);");
-	QFile file(dir);
-	if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+	if (ui.checkBox->checkState() && ui.listWidget->count() > 0)
 	{
-		QTextStream stream(&file);
-		stream << data_l;
+		QMessageBox::information(0, "Information", QString::fromLocal8Bit("Открыт входной файл!"));
 	}
-	file.close();
+	else 
+	{
+		QString dir = save_f.getSaveFileName(0, "Open", "", "All files (*.*) ;; Document files (*.txt);");
+		QFile file(dir);
+		if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+		{
+			QTextStream stream(&file);
+			stream << data_l;
+		}
+		file.close();
+	}
 }
 
 void QtGuiTestProject::read() // считывает данные и помещает в список
 {   	
-	if (ui.listWidget->count() > 0)
+
+	if (ui.checkBox->checkState() && ui.listWidget->count() > 0)
 	{
-		linesModel = new QStringListModel(*allLines, NULL);
-		linesModel->setStringList(*allLines);
-		ui.listView->setModel(linesModel);
+		QMessageBox::information(0, "Information", QString::fromLocal8Bit("Открыт входной файл!"));
 	}
 	else
 	{
-		QMessageBox::information(0, "Information", QString::fromLocal8Bit("Входной файл отсутствует"));
+		if (ui.listWidget->count() > 0)
+		{
+			linesModel = new QStringListModel(*allLines, NULL);
+			linesModel->setStringList(*allLines);
+		}
+		else
+		{
+			QMessageBox::information(0, "Information", QString::fromLocal8Bit("Входной файл отсутствует"));
+		}
 	}
 }
 
 void QtGuiTestProject::modify() // изменяет получает данные сохраняет их в буфер
 {
-	if (ui.listWidget->count() > 0)
+
+	if (ui.checkBox->checkState() && ui.listWidget->count() > 0)
 	{
-	if (ui.lineEdit_modify->text().size() > 0) {
-		QString get_text = ui.lineEdit_modify->text();
-		for (int i = 0; i < line_str.size(); ++i)
-		{
-			if (get_text == line_str[i])
-			{
-				line_str.remove(get_text);
-			}
-		}
-		read();
-		allLines->append(line_str);
-		data_l.clear();          // очищаем текущий буфер
-		data_l.append(line_str); // записываем в буфер новую строку
+		QMessageBox::information(0, "Information", QString::fromLocal8Bit("Открыт входной файл!"));
 	}
 	else
 	{
-		QMessageBox::information(0, "Information", QString::fromLocal8Bit("Графа модификация пуста"));
-	}
-		
-	}
-	else {
-		QMessageBox::information(0, "Information", QString::fromLocal8Bit("Входной файл отсутствует"));
-	}
+		if (ui.listWidget->count() > 0)
+		{
+			if (ui.lineEdit_modify->text().size() > 0) {
+				QString get_text = ui.lineEdit_modify->text();
+				for (int i = 0; i < line_str.size(); ++i)
+				{
+					if (get_text == line_str[i])
+					{
+						line_str.remove(get_text);
+					}
+				}
+				read();
+				allLines->append(line_str);
+				ui.textBrowser_2->clear();                          
+				ui.textBrowser_2->append(line_str);                   	
+				data_l.clear();          // очищаем текущий буфер
+				data_l.append(line_str); // записываем в буфер новую строку
+			}
+			else
+			{
+				QMessageBox::information(0, "Information", QString::fromLocal8Bit("Графа модификация пуста"));
+			}
 
+		}
+		else {
+			QMessageBox::information(0, "Information", QString::fromLocal8Bit("Входной файл отсутствует"));
+		}
 
+	}
 
 
 
@@ -163,49 +191,68 @@ void QtGuiTestProject::modify() // изменяет получает данные сохраняет их в буфер
 
 void QtGuiTestProject::set_timer() // функция установки таймера
 {	
-	if (ui.lineEdit_modify->text().size() > 0)
-	{
-		if (ui.lineEdit_timer->text().size() > 0)
-		{
-			if (ui.listWidget->count() > 0)
-			{
-				timer2->start((ui.lineEdit_timer->text().toInt()) * 1000);
-			}
-			else {
-				QMessageBox::information(0, "Information", QString::fromLocal8Bit("Входной файл отсутствует"));
-			}
 
-		}
-		else {
-			QMessageBox::information(0, "Information", QString::fromLocal8Bit("Значение таймера не введено"));
-		}
+	if (ui.checkBox->checkState() && ui.listWidget->count() > 0)
+	{
+		QMessageBox::information(0, "Information", QString::fromLocal8Bit("Открыт входной файл!"));
 	}
 	else
 	{
-		QMessageBox::information(0, "Information", QString::fromLocal8Bit("Графа модификация пуста"));
+		if (ui.lineEdit_modify->text().size() > 0)
+		{
+			if (ui.lineEdit_timer->text().size() > 0)
+			{
+				if (ui.listWidget->count() > 0)
+				{
+					timer2->start((ui.lineEdit_timer->text().toInt()) * 1000);
+				}
+				else {
+					QMessageBox::information(0, "Information", QString::fromLocal8Bit("Входной файл отсутствует"));
+				}
+
+			}
+			else {
+				QMessageBox::information(0, "Information", QString::fromLocal8Bit("Значение таймера не введено"));
+			}
+		}
+		else
+		{
+			QMessageBox::information(0, "Information", QString::fromLocal8Bit("Графа модификация пуста"));
+		}
 	}
-
-	
-
-	
-
 }
 
 void QtGuiTestProject::make() // выполняет модификацию и останавливает таймер
 {
-	
-	modify(); 
-	linesModel->removeRows(ui.listView->currentIndex().row(), 1);
 	modify();
+	QMessageBox::information(0, "Information", QString::fromLocal8Bit("Преобразование текста выполнено!"));
 	timer2->stop();
 }
 
-void QtGuiTestProject::clear_list() // очищает список входных файлов
+void QtGuiTestProject::clear_list() // очищает список отображения содержимого файла
 {
-	linesModel->removeRows(ui.listView->currentIndex().row(),1);
+	if (ui.checkBox->checkState() && ui.listWidget->count() > 0)
+	{
+		QMessageBox::information(0, "Information", QString::fromLocal8Bit("Открыт входной файл!"));
+	}
+	else
+	{
+		ui.textBrowser_2->clear();
+	}
+	
 }
 
-void QtGuiTestProject::clear_enter_file()
+void QtGuiTestProject::clear_enter_file() // очищает список входных файлов
 {
+	
+	if (ui.checkBox->checkState()&& ui.listWidget->count() > 0) 
+	{		
+			QMessageBox::information(0, "Information", QString::fromLocal8Bit("Открыт входной файл!"));		
+	}
+	else
+	{
 		ui.listWidget->clear();
+	}
+	
 }
+

@@ -14,7 +14,6 @@
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
@@ -31,7 +30,6 @@ public:
     QWidget *centralWidget;
     QListWidget *listWidget;
     QPushButton *pushButton_find;
-    QListView *listView;
     QPushButton *pushButton_open_file;
     QPushButton *pushButton_save;
     QPushButton *pushButton_read;
@@ -44,6 +42,8 @@ public:
     QPushButton *pushButton_delete;
     QLabel *label_2;
     QTextBrowser *textBrowser;
+    QTextBrowser *textBrowser_2;
+    QCheckBox *checkBox;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -51,7 +51,7 @@ public:
     {
         if (QtGuiTestProjectClass->objectName().isEmpty())
             QtGuiTestProjectClass->setObjectName(QStringLiteral("QtGuiTestProjectClass"));
-        QtGuiTestProjectClass->resize(577, 450);
+        QtGuiTestProjectClass->resize(577, 459);
         centralWidget = new QWidget(QtGuiTestProjectClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         listWidget = new QListWidget(centralWidget);
@@ -60,9 +60,6 @@ public:
         pushButton_find = new QPushButton(centralWidget);
         pushButton_find->setObjectName(QStringLiteral("pushButton_find"));
         pushButton_find->setGeometry(QRect(30, 270, 101, 28));
-        listView = new QListView(centralWidget);
-        listView->setObjectName(QStringLiteral("listView"));
-        listView->setGeometry(QRect(300, 60, 256, 192));
         pushButton_open_file = new QPushButton(centralWidget);
         pushButton_open_file->setObjectName(QStringLiteral("pushButton_open_file"));
         pushButton_open_file->setGeometry(QRect(10, 20, 93, 28));
@@ -102,6 +99,12 @@ public:
         textBrowser = new QTextBrowser(centralWidget);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
         textBrowser->setGeometry(QRect(300, 270, 256, 61));
+        textBrowser_2 = new QTextBrowser(centralWidget);
+        textBrowser_2->setObjectName(QStringLiteral("textBrowser_2"));
+        textBrowser_2->setGeometry(QRect(290, 60, 261, 191));
+        checkBox = new QCheckBox(centralWidget);
+        checkBox->setObjectName(QStringLiteral("checkBox"));
+        checkBox->setGeometry(QRect(290, 380, 151, 20));
         QtGuiTestProjectClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(QtGuiTestProjectClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -134,6 +137,7 @@ public:
 "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\237\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\260 \321\201\321\207\320\270\321\202\321\213\320\262\320\260\320\265\321\202 \321\202\320\265\320\272\321\201\321\202 \320\270 \321\203\320\264\320\260\320\273\321\217\320\265\321\202 \320\262 \320\275\320\265\320\274 \321\201\320\270\320\274\320\262\320\276\320\273\321\213 \320\262\320\262\320\265\320\264\320\265\320\275\320\275\321\213\320\265 \320\262 \320\263\321\200\320\260\321\204\321\203 &quot;\320\234\320\276\320\264\320\270\321\204\320\270\321\206\320\270\321\200\320\276\320\262"
                         "\320\260\321\202\321\214 \321\204\320\260\320\271\320\273&quot;.</p></body></html>", nullptr));
+        checkBox->setText(QApplication::translate("QtGuiTestProjectClass", " \320\262\320\272\320\273\321\216\321\207\320\270\321\202\321\214 \320\267\320\260\321\211\320\270\321\202\321\203", nullptr));
     } // retranslateUi
 
 };
