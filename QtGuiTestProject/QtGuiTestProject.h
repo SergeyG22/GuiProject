@@ -26,6 +26,7 @@ private:
 public slots:
 	//QString set_line_edit_mask();
 	//QString set_line_edit_path();
+	void clear_enter_file();
 	void observer();
 	void open_file();
 	void save_file();
