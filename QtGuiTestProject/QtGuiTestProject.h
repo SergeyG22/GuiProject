@@ -33,4 +33,5 @@ public slots:
 	void modify();
 	void set_timer();
 	void make();
+	void clear_list();
 };

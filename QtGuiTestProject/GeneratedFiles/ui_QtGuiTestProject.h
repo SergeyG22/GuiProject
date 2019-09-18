@@ -42,6 +42,7 @@ public:
     QPushButton *pushButton_modify;
     QLineEdit *lineEdit_timer;
     QPushButton *pushButton_timer;
+    QPushButton *pushButton_delete;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -63,10 +64,10 @@ public:
         listView->setGeometry(QRect(300, 60, 256, 192));
         pushButton_open_file = new QPushButton(centralWidget);
         pushButton_open_file->setObjectName(QStringLiteral("pushButton_open_file"));
-        pushButton_open_file->setGeometry(QRect(50, 20, 93, 28));
+        pushButton_open_file->setGeometry(QRect(10, 20, 93, 28));
         pushButton_save = new QPushButton(centralWidget);
         pushButton_save->setObjectName(QStringLiteral("pushButton_save"));
-        pushButton_save->setGeometry(QRect(150, 20, 93, 28));
+        pushButton_save->setGeometry(QRect(110, 20, 93, 28));
         pushButton_read = new QPushButton(centralWidget);
         pushButton_read->setObjectName(QStringLiteral("pushButton_read"));
         pushButton_read->setGeometry(QRect(140, 270, 121, 28));
@@ -75,7 +76,7 @@ public:
         checkBox_2->setGeometry(QRect(280, 320, 271, 61));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(300, 20, 221, 20));
+        label->setGeometry(QRect(340, 20, 221, 20));
         QFont font;
         font.setPointSize(10);
         label->setFont(font);
@@ -94,6 +95,9 @@ public:
         pushButton_timer = new QPushButton(centralWidget);
         pushButton_timer->setObjectName(QStringLiteral("pushButton_timer"));
         pushButton_timer->setGeometry(QRect(80, 346, 161, 28));
+        pushButton_delete = new QPushButton(centralWidget);
+        pushButton_delete->setObjectName(QStringLiteral("pushButton_delete"));
+        pushButton_delete->setGeometry(QRect(210, 20, 93, 28));
         QtGuiTestProjectClass->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(QtGuiTestProjectClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -124,6 +128,7 @@ public:
                         "\320\260\321\202\321\214 \321\204\320\260\320\271\320\273&quot;.</p></body></html>", nullptr));
         pushButton_modify->setText(QApplication::translate("QtGuiTestProjectClass", "\320\234\320\276\320\264\320\270\321\204\320\270\321\206\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \321\204\320\260\320\271\320\273", nullptr));
         pushButton_timer->setText(QApplication::translate("QtGuiTestProjectClass", "\320\227\320\260\320\277\321\203\321\201\321\202\320\270\321\202\321\214 \321\202\320\260\320\271\320\274\320\265\321\200", nullptr));
+        pushButton_delete->setText(QApplication::translate("QtGuiTestProjectClass", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 
 };

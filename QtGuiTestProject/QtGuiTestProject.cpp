@@ -5,6 +5,8 @@
 #include <iostream>
 #include <qstringlistmodel.h>
 #include <qtimer.h>
+#include <qmessagebox.h>
+
 
 QtGuiTestProject::QtGuiTestProject(QWidget *parent)
 	: QMainWindow(parent), get_text_for_path("C:/"), get_text_for_mask("*.txt")
@@ -14,6 +16,7 @@ QtGuiTestProject::QtGuiTestProject(QWidget *parent)
 	QTimer* timer1 = new QTimer();
 	timer2 = new QTimer();// установка таймера
 	this->setWindowTitle("file modification 1.0.1");
+//	ui.listView->setSelectionRectVisible(false);
 	ui.lineEdit_timer->setValidator(new QIntValidator(0, 60));
 	connect(ui.pushButton_open_file, SIGNAL(clicked()), this, SLOT(open_file()));
 	connect(ui.pushButton_save, SIGNAL(clicked()), this, SLOT(save_file()));
@@ -22,6 +25,7 @@ QtGuiTestProject::QtGuiTestProject(QWidget *parent)
 	connect(timer1, SIGNAL(timeout()), this, SLOT(observer()));
 	connect(timer2, SIGNAL(timeout()), this, SLOT(make()));
 	connect(ui.pushButton_timer, SIGNAL(clicked()), this, SLOT(set_timer()) );
+	connect(ui.pushButton_delete, SIGNAL(clicked()), this, SLOT(clear_list()));
 	timer1->start(5000);
 	
 }
@@ -127,12 +131,45 @@ void QtGuiTestProject::modify() // изменяет получает данные сохраняет их в буфер
 
 void QtGuiTestProject::set_timer() // функция установки таймера
 {	
-	timer2->start((ui.lineEdit_timer->text().toInt())*1000);
+	if (ui.lineEdit_modify->text().size() > 0)
+	{
+		if (ui.lineEdit_timer->text().size() > 0)
+		{
+			if (ui.listWidget->count() > 0)
+			{
+				timer2->start((ui.lineEdit_timer->text().toInt()) * 1000);
+			}
+			else {
+				QMessageBox::information(0, "Information", QString::fromLocal8Bit("Входной файл отсутствует"));
+			}
+
+		}
+		else {
+			QMessageBox::information(0, "Information", QString::fromLocal8Bit("Значение таймера не введено"));
+		}
+	}
+	else
+	{
+		QMessageBox::information(0, "Information", QString::fromLocal8Bit("Графа модификация пуста"));
+	}
+
+	
+
+	
+
 }
 
 void QtGuiTestProject::make() // выполняет модификацию и останавливает таймер
 {
+	
 	modify(); 
+	linesModel->removeRows(ui.listView->currentIndex().row(), 1);
 	modify();
 	timer2->stop();
+}
+
+void QtGuiTestProject::clear_list() // очищает список входных файлов
+{
+	linesModel->removeRows(ui.listView->currentIndex().row(),1);
+	ui.listWidget->clear();
 }

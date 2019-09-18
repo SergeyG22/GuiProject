@@ -50,7 +50,7 @@
    <widget class="QPushButton" name="pushButton_open_file">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>10</x>
       <y>20</y>
       <width>93</width>
       <height>28</height>
@@ -63,7 +63,7 @@
    <widget class="QPushButton" name="pushButton_save">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>110</x>
       <y>20</y>
       <width>93</width>
       <height>28</height>
@@ -102,7 +102,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>340</x>
       <y>20</y>
       <width>221</width>
       <height>20</height>
@@ -178,6 +178,19 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>Запустить таймер</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_delete">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>20</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Удалить</string>
     </property>
    </widget>
   </widget>
